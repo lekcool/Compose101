@@ -29,6 +29,7 @@ import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.lkdev.compose101.R
 import com.lkdev.compose101.model.Product
+import com.lkdev.compose101.ui.theme.TextNew
 import com.lkdev.compose101.ui.theme.TextPrice
 
 @ExperimentalFoundationApi
@@ -93,19 +94,29 @@ fun ProductItem(product: Product, onCLick: () -> Unit, modifier: Modifier = Modi
             }
             .padding(16.dp)
     ) {
-        Image(
-            painter = rememberImagePainter(
-                data = product.image,
-                builder = {
-                    placeholder(R.drawable.ic_launcher_background)
-                    error(R.drawable.ic_launcher_background)
-                }
-            ),
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxWidth()
-                .aspectRatio(1F)
-        )
+        Box(contentAlignment = Alignment.TopEnd) {
+            Image(
+                painter = rememberImagePainter(
+                    data = product.image,
+                    builder = {
+                        placeholder(R.drawable.ic_launcher_background)
+                        error(R.drawable.ic_launcher_background)
+                    }
+                ),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(1F)
+            )
+            if (product.isNewProduct) {
+                Text(
+                    text = "NEW",
+                    style = TextNew,
+                    modifier = modifier
+                        .padding(8.dp)
+                )
+            }
+        }
         Text(
             text = product.title,
             style = MaterialTheme.typography.subtitle1,

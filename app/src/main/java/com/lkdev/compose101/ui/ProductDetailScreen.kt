@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,6 +21,7 @@ import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.lkdev.compose101.R
 import com.lkdev.compose101.model.Product
+import com.lkdev.compose101.ui.theme.TextNew2
 import com.lkdev.compose101.ui.theme.TextPrice
 
 @Composable
@@ -66,19 +68,30 @@ fun ProductDetail(product: Product, modifier: Modifier = Modifier) {
             .verticalScroll(scrollState)
     ) {
         Spacer(modifier = Modifier.size(32.dp))
-        Image(
-            painter = rememberImagePainter(
-                data = product.image,
-                builder = {
-                    placeholder(R.drawable.ic_launcher_background)
-                    error(R.drawable.ic_launcher_background)
-                }
-            ),
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxWidth()
-                .aspectRatio(1F)
-        )
+        Box(contentAlignment = Alignment.TopEnd) {
+            Image(
+                painter = rememberImagePainter(
+                    data = product.image,
+                    builder = {
+                        placeholder(R.drawable.ic_launcher_background)
+                        error(R.drawable.ic_launcher_background)
+                    }
+                ),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(1F)
+            )
+
+            if (product.isNewProduct) {
+                Text(
+                    text = "NEW",
+                    style = TextNew2,
+                    modifier = modifier
+                        .padding(8.dp)
+                )
+            }
+        }
         Text(
             text = product.title,
             style = MaterialTheme.typography.h6,

@@ -1,10 +1,7 @@
 package com.lkdev.compose101.ui.theme
 
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Typography
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
@@ -38,5 +35,17 @@ val Typography = Typography(
 val TextPrice = TextStyle(
     fontWeight = FontWeight.Bold,
     fontSize = 24.sp,
-    color = TextPriceColor
+    color = RedColor
+)
+
+val TextNew = TextStyle(
+    fontWeight = FontWeight.Bold,
+    fontSize = 14.sp,
+    color = RedColor
+)
+
+val TextNew2 = TextStyle(
+    fontWeight = FontWeight.Bold,
+    fontSize = 16.sp,
+    color = RedColor
 )
