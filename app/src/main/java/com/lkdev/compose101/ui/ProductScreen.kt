@@ -125,7 +125,7 @@ fun ProductItem(product: Product, onCLick: () -> Unit, modifier: Modifier = Modi
             modifier = Modifier.padding(top = 8.dp)
         )
         Text(
-            text = "${product.price}",
+            text = product.getPriceFormat(),
             style = TextPrice,
             color = Color.Red
         )

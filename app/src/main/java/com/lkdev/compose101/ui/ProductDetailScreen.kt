@@ -98,7 +98,7 @@ fun ProductDetail(product: Product, modifier: Modifier = Modifier) {
             modifier = Modifier.padding(top = 8.dp)
         )
         Text(
-            text = "${product.price}",
+            text = product.getPriceFormat(),
             style = TextPrice,
             color = Color.Red
         )
@@ -121,7 +121,7 @@ fun ProductDetailPreview() {
             image = "https://firebasestorage.googleapis.com/v0/b/test-4c60c.appspot.com/o/cookie2%402x.png?alt=media&token=f8a2a013-8a6e-44b6-b66d-feb20bfc6a51",
             content = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of.",
             isNewProduct = true,
-            price = 9.21
+            price = 9.212
         )
     )
 }
