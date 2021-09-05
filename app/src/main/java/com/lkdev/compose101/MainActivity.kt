@@ -4,14 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.Scaffold
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -36,38 +31,21 @@ class MainActivity : ComponentActivity() {
                         startDestination = "product",
                         modifier = Modifier.padding(it)
                     ) {
-                        composable(route = "product") {
-                            Column {
-                                TopAppBar(title = {
-                                    Text(text = "Products", color = Color.White)
-                                })
+                        composable(
+                            route = "product",
+                            content = {
                                 ProductScreen(navController = navController)
                             }
-                        }
+                        )
                         composable(
                             route = "product/{productId}",
                             arguments = listOf(navArgument("productId") {
                                 type = NavType.IntType
-                            })
-                        ) {
-                            Column(Modifier.background(Color.White)) {
-                                TopAppBar(
-                                    title = { Text(text = "Detail", color = Color.White) },
-                                    navigationIcon = {
-                                        IconButton(onClick = navController::popBackStack) {
-                                            Icon(
-                                                Icons.Filled.ArrowBack,
-                                                contentDescription = null
-                                            )
-                                        }
-                                    }
-                                )
-                                ProductDetailScreen(
-                                    navController = navController,
-                                    id = it.arguments?.getInt("productId")
-                                )
+                            }),
+                            content = {
+                                ProductDetailScreen(navController = navController)
                             }
-                        }
+                        )
                     }
                 }
             }
